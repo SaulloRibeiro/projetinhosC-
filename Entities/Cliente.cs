@@ -3,7 +3,7 @@ using System.Text;
 namespace GerenciamentoLojaOnlineDesafio.Entities{
 
     public class Cliente{
-
+        public int Id {get; private set;}
         public string Nome {get; set;} = string.Empty;
         public string Cpf {get; private set;} = string.Empty;
         public string Telefone {get; set;} = string.Empty;
@@ -12,6 +12,15 @@ namespace GerenciamentoLojaOnlineDesafio.Entities{
 
         public Cliente(){}
         public Cliente(string nome, string cpf, string telefone ,string email, string endereco){
+            Nome = nome;
+            Cpf = cpf;
+            Telefone = telefone;
+            Email = email;
+            Endereco = endereco;
+        }
+
+        public Cliente(int id, string nome, string cpf, string telefone, string email, string endereco){
+            Id = id;
             Nome = nome;
             Cpf = cpf;
             Telefone = telefone;

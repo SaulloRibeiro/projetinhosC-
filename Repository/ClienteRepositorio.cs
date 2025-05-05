@@ -21,9 +21,7 @@ namespace GerenciamentoLojaOnlineDesafio.Repository{
                 mySqlCommand.Parameters.AddWithValue("@telefone", cliente.Telefone);
                 mySqlCommand.Parameters.AddWithValue("@email", cliente.Email);
                 mySqlCommand.Parameters.AddWithValue("@endereco", cliente.Endereco);
-
                 mySqlCommand.ExecuteNonQuery();
-
             }
             catch(Exception e){
                 throw new Exception("Deu merda pra caralho " + e.Message);
@@ -66,13 +64,14 @@ namespace GerenciamentoLojaOnlineDesafio.Repository{
                 MySqlDataReader dados = mySqlCommand.ExecuteReader();
             
                 while(dados.Read()){
+                    int id = dados.GetInt32("id_cliente");
                     string nome = dados.GetString("nome_cliente");
                     string cpf = dados.GetString("cpf_cliente");
                     string telefone = dados.GetString("telefone_cliente");
                     string email = dados.GetString("email_cliente");
                     string endereco = dados.GetString("endereco_cliente");
                     
-                    clientes.Add(new Cliente(nome, cpf, telefone, email, endereco));
+                    clientes.Add(new Cliente(id,nome, cpf, telefone, email, endereco));
                 }
 
                 dados.Close();   
@@ -99,13 +98,14 @@ namespace GerenciamentoLojaOnlineDesafio.Repository{
                 MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
                 
                 while(mySqlDataReader.Read()){
+                    int id = mySqlDataReader.GetInt32("id_cliente");
                     string nome = mySqlDataReader.GetString("nome_cliente");
                     string cpf = mySqlDataReader.GetString("cpf_cliente");
                     string telefone = mySqlDataReader.GetString("telefone_cliente");
                     string email = mySqlDataReader.GetString("email_cliente");
                     string endereco = mySqlDataReader.GetString("endereco_cliente");
 
-                    cliente = new Cliente(nome, cpf, telefone, email, endereco);
+                    cliente = new Cliente(id,nome, cpf, telefone, email, endereco);
                 }
             }
             catch(Exception e){

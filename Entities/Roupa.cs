@@ -5,17 +5,29 @@ using System.Text;
 namespace GerenciamentoLojaOnlineDesafio.Entities{
     public class Roupa{
 
+        public int Id {get; private set;}
         public string Modelo {get; set;}
         public double Preco {get; set;}
         public string Cor {get; set;}
         public string Tecido {get; set;}
         public string Marca {get; set;}
         public int Quantidade {get; set;}
-        public Tamanho Tamanho{get; set;}
+        public string Tamanho{get; set;}
     
         public Roupa(){}
 
-        public Roupa(string modelo, double preco, string cor, string tecido, string marca, int quantidade,Tamanho tamanho ){
+        public Roupa(string modelo, double preco, string cor, string tecido, string marca, int quantidade, string tamanho ){
+            Modelo = modelo;
+            Preco = preco;
+            Cor = cor;
+            Tecido = tecido;
+            Marca = marca;
+            Quantidade = quantidade;
+            Tamanho = tamanho;
+        }
+
+        public Roupa(int id, string modelo, double preco, string cor, string tecido, string marca, int quantidade,string tamanho){
+            Id = id;
             Modelo = modelo;
             Preco = preco;
             Cor = cor;
