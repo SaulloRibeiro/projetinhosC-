@@ -1,4 +1,3 @@
-using GerenciamentoLojaOnlineDesafio.Entities.enums;
 using System.Globalization;
 using System.Text;
 
@@ -13,6 +12,7 @@ namespace GerenciamentoLojaOnlineDesafio.Entities{
         public string Marca {get; set;}
         public int Quantidade {get; set;}
         public string Tamanho{get; set;}
+        public string Codigo{get; private set;} = "XXXXX";
     
         public Roupa(){}
 
@@ -26,7 +26,7 @@ namespace GerenciamentoLojaOnlineDesafio.Entities{
             Tamanho = tamanho;
         }
 
-        public Roupa(int id, string modelo, double preco, string cor, string tecido, string marca, int quantidade,string tamanho){
+        public Roupa(int id, string modelo, double preco, string cor, string tecido, string marca, int quantidade,string tamanho, string codigo){
             Id = id;
             Modelo = modelo;
             Preco = preco;
@@ -35,10 +35,12 @@ namespace GerenciamentoLojaOnlineDesafio.Entities{
             Marca = marca;
             Quantidade = quantidade;
             Tamanho = tamanho;
+            Codigo = codigo;
         }
 
         public override string ToString(){
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Id: {Id}");
             sb.AppendLine($"Nome: {Modelo}");
             sb.AppendLine($"Cor: {Cor}");
             sb.AppendLine($"Tamaho: {Tamanho}");
@@ -46,6 +48,7 @@ namespace GerenciamentoLojaOnlineDesafio.Entities{
             sb.AppendLine($"Marca: {Marca}");
             sb.AppendLine($"Preco: R${Preco.ToString("F2", CultureInfo.InvariantCulture)}");
             sb.AppendLine($"Quatidade estoque: {Quantidade}");
+            sb.AppendLine($"Codigo produto: {Codigo}");
             return sb.ToString();
         }
     }

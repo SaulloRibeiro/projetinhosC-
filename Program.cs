@@ -64,12 +64,22 @@ public class Program{
         try{
             RoupaRepositorio rr = new RoupaRepositorio();
 
-            rr.AddRoupa(roupa1);
-            rr.AddRoupa(roupa2);
-            rr.AddRoupa(roupa3);
-            rr.AddRoupa(roupa4);
+            // rr.AddRoupa(roupa1);
+            // rr.AddRoupa(roupa2);
+            // rr.AddRoupa(roupa3);
+            // rr.AddRoupa(roupa4);
+            // rr.RemoverRoupa(roupa4);
 
-            Console.WriteLine("Roupas adicionadas com sucesso!");
+            // foreach(Roupa r in rr.GetTodosRoupaDoBancoDados()){
+            //     Console.WriteLine(r);
+            // }
+            Console.WriteLine(rr.BuscarRoupaPorIdECodigoProduto(5, "XXXXX"));
+
+            Roupa teste = rr.BuscarRoupaPorIdECodigoProduto(5,"XXXXX");
+            teste.Marca = "oaacle";
+            rr.EditarProduto(teste, 5,"XXXXX");
+            Console.WriteLine(rr.BuscarRoupaPorIdECodigoProduto(5,"XXXXX"));
+            // Console.WriteLine("Roupas adicionadas com sucesso!");
         }
         catch(Exception e){
             Console.WriteLine(e.Message);

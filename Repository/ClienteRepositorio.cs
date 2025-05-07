@@ -89,7 +89,7 @@ namespace GerenciamentoLojaOnlineDesafio.Repository{
         
         public Cliente GetClinteDoBancoDeDados(string cpfCliente){
             string slq = "select * from clientes where cpf_cliente = @cpf";
-            Cliente cliente = null;
+            
 
             try{
                 MySqlCommand mySqlCommand = new MySqlCommand(slq, _mySqlConnection.Conectar());
@@ -105,8 +105,10 @@ namespace GerenciamentoLojaOnlineDesafio.Repository{
                     string email = mySqlDataReader.GetString("email_cliente");
                     string endereco = mySqlDataReader.GetString("endereco_cliente");
 
-                    cliente = new Cliente(id,nome, cpf, telefone, email, endereco);
+                    Cliente cliente = new Cliente(id,nome, cpf, telefone, email, endereco);
+                    return cliente;
                 }
+                mySqlDataReader.Close();
             }
             catch(Exception e){
                 throw new Exception("Deu merda: " + e.Message);
@@ -115,7 +117,7 @@ namespace GerenciamentoLojaOnlineDesafio.Repository{
                 _mySqlConnection.Desconectar();
             }
 
-            return cliente;
+            return null;
         }
 
     }
